@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-wow
+    environment:
+      MYSQL_ROOT_PASSWORD: "w0ws3rv3r"
+      MYSQL_DATABASE: "trinitycore"
+    restart: always
+  TrinityCore:
+    build: trinitycore/
+    image: aperez/trinitycore
+    container_name: TrinityCore
+    links:
+      - mysql:mysql
